@@ -4,8 +4,6 @@ const axios = require('axios');
 const Run = function()
 {
     const mannaUrl = 'http://www.ourmanna.com/verses/api/get?format=text&order=random';
-    // if((new Date().getMinutes() % 5) == 0 )
-    // {
         // get bible verse
         axios.get(mannaUrl)
             .then((response) => {
@@ -20,7 +18,6 @@ const Run = function()
                 PostMessage(verseMessage);
             })
             .catch((err) => console.error('Error getting verse: ' + err))
-    // }
 }
 
 const PostMessage = function(verseMessage)
