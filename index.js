@@ -1,21 +1,19 @@
 require('dotenv').config();
-const director = require('director');
 const axios = require('axios');
 
 const Run = function()
 {
     const mannaUrl = 'http://www.ourmanna.com/verses/api/get?format=text&order=random';
-    let verse = '';
-    if((new Date().getMinutes() % 1) == 0 )
+    if((new Date().getMinutes() % 5) == 0 )
     {
         // get bible verse
         axios.get(mannaUrl)
             .then((response) => {
-                verse = response.data;
+                let verse = response.data;
 
                 const verseMessage = 
                     `Good morning everyone!\n`+
-                    `Today's verse of the day: "${verse}"\n`+
+                    `Today's verse of the day: ${verse}\n`+
                     `Have a great day! 😄`
 
                 // send it to group me
@@ -33,8 +31,8 @@ const PostMessage = function(verseMessage)
         "bot_id" : process.env.BOT_ID,
         "text" : verseMessage,
     }
-    console.log(`Sending verse, ${verse}, to group ${process.env.GROUP_ID}`)
-    axios.post(url, data)
+    console.log(`Sending message:\n ${verseMessage}\n to group ${process.env.GROUP_ID}`)
+    axios.post(groupMeUrl, data)
         .then(response => {
             console.log("It is done")
         })
