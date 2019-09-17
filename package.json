@@ -1,0 +1,16 @@
+{
+  "name": "messenger",
+  "version": "1.0.0",
+  "description": "GroupMe Bot that sends random daily bible verses",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "J. Niara",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "director": "^1.2.8",
+    "dotenv": "^8.1.0"
+  }
+}
